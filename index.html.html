@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversário 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(ellipse at center, #7b2ff7 0%, #1d2671 100%);
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      opacity: 0.3;
+      z-index: 0;
+      animation: twinkle 5s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 0.6; }
+    }
+
+    .intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #000000cc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .intro h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      margin-bottom: 40px;
+      color: #8ec5fc;
+    }
+    .btns {
+      display: flex;
+      gap: 20px;
+    }
+    .btns button {
+      padding: 10px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #7b2ff7;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btns button:hover {
+      background-color: #4c00a4;
+    }
+
+    .main {
+      display: none;
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .typing {
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      white-space: nowrap;
+      animation: typing 4s steps(50, end), blink .7s infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #fff }
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .gallery img {
+      height: 250px;
+      border-radius: 15px;
+      animation: float 4s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .quote {
+      margin-top: 50px;
+      font-size: 24px;
+      font-style: italic;
+      color: #d9b3ff;
+    }
+    .song-quote {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: #ffd6ff;
+      margin-top: 10px;
+    }
+
+    .countdown-container {
+      margin-top: 60px;
+    }
+    .styled-timer {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+    .styled-timer div {
+      text-align: center;
+    }
+    .styled-timer span {
+      display: block;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .label {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background: red;
+      border-radius: 50%;
+      animation: floatBalloon 6s infinite ease-in-out;
+    }
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      background: #555;
+      top: 40px;
+      left: 14px;
+    }
+    @keyframes floatBalloon {
+      0% { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .music-player {
+      margin-top: 40px;
+    }
+    audio {
+      width: 300px;
+      outline: none;
+    }
+
+    .heart {
+      position: fixed;
+      color: pink;
+      animation: fall 4s linear forwards;
+      z-index: 1000;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro" id="intro">
+    <h1>Preparada para sua surpresa?</h1>
+    <div class="btns">
+      <button class="yes" id="yesBtn">Sim, quero meus parabéns 🎉</button>
+      <button class="no" id="noBtn">Não, prefiro bolo 🍰</button>
+    </div>
+  </div>
+
+  <div class="main" id="main">
+    <h1 class="typing">Feliz Aniversário, meu bem! 🎂</h1>
+    <p>Hoje é o seu dia, e eu não poderia deixar passar sem te desejar tudo de melhor que a vida pode te dar. Quero que você saiba que, independentemente de qualquer distância, ainda te guardo com muito carinho na minha história e nos meus pensamentos.
+
+Você é uma pessoa única, cheia de qualidades e força, mesmo que às vezes não perceba. Eu espero que este novo ciclo seja leve, que traga paz, oportunidades e momentos que façam seu coração sorrir de verdade. Que você encontre sempre razões para acreditar em si mesma e seguir em frente.
+
+Desejo que cada passo seu te leve para mais perto dos seus sonhos, que você se permita viver experiências novas e bonitas, e que nunca se esqueça do quanto é capaz.
+
+Obrigado por tudo o que já compartilhamos e pelo que aprendi ao seu lado. Aproveite muito o seu dia, celebre como merece e continue sendo essa pessoa incrível. 
+Parabéns mais uma vez, eu te amo muito e sempre! 💛</p>
+
+    <div class="gallery">
+      <img src="./l/l1.jpg" alt="Foto 1">
+      <img src="./l/l2.jpg" alt="Foto 2">
+      <img src="./l/l3.jpg" alt="Foto 3">
+    </div>
+
+    <div class="quote">“Você é meu lugar seguro, mesmo longe.🤍” 🎈</div>
+    <div class="song-quote">"Can I go where you go? Can we always be this close?"</div>
+
+    <div class="countdown-container">
+      <h2>Contagem Regressiva para o próximo aniversário 🎊</h2>
+      <div class="styled-timer" id="timer">
+        <div><span id="dias">0</span><div class="label">dias</div></div>
+        <div><span id="horas">0</span><div class="label">horas</div></div>
+        <div><span id="minutos">0</span><div class="label">minutos</div></div>
+        <div><span id="segundos">0</span><div class="label">segundos</div></div>
+      </div>
+    </div>
+
+    <div class="music-player">
+      <p>🎵 Lover - Taylor Swift 🎵</p>
+      <audio controls>
+        <source src="./l/Lover.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const main = document.getElementById('main');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    function spawnBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * window.innerWidth + 'px';
+      balloon.style.background = `hsl(${Math.random()*360}, 70%, 60%)`;
+      balloon.style.animationDuration = `${4 + Math.random() * 6}s`;
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 10000);
+    }
+    setInterval(spawnBalloon, 800);
+
+    noBtn.addEventListener('mouseover', () => {
+      noBtn.style.position = "absolute";
+      noBtn.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+      noBtn.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      intro.style.display = 'none';
+      main.style.display = 'block';
+      startCountdown();
+    });
+
+    function startCountdown() {
+      const today = new Date();
+      let nextBirthday = new Date(today.getFullYear(), 6, 18);
+      if (today > nextBirthday) {
+        nextBirthday.setFullYear(today.getFullYear() + 1);
+      }
+      function updateTimer() {
+        const now = new Date();
+        const distance = nextBirthday - now;
+        const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("dias").innerText = dias;
+        document.getElementById("horas").innerText = horas;
+        document.getElementById("minutos").innerText = minutos;
+        document.getElementById("segundos").innerText = segundos;
+      }
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.textContent = '💖';
+          heart.style.left = Math.random() * window.innerWidth + 'px';
+          heart.style.top = '-20px';
+          heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+          heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 5000);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
